@@ -1,0 +1,525 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Calculator_Test</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">MathUtilsTest</a>
+</div>
+
+<h1>Coverage Summary for Class: Calculator_Test (MathUtilsTest)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Calculator_Test</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (29/29)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (178/178)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package MathUtilsTest;
+&nbsp;
+&nbsp;import MathUtils.Calculator;
+&nbsp;import org.junit.jupiter.api.Assertions;
+&nbsp;import org.junit.jupiter.api.Tag;
+&nbsp;import org.junit.jupiter.api.Test;
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;public class Calculator_Test</b>
+&nbsp;{
+&nbsp;
+&nbsp;
+&nbsp;    // @Before
+&nbsp;    //  public void setup(){
+&nbsp;    //   calc = new Calculator();
+&nbsp;    //  }
+&nbsp;
+&nbsp;
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    ///////// Compute total mark TEST ///////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    @Test
+&nbsp;    void Test_compute_total_mark_positiveTesting()
+&nbsp;    {
+<b class="fc">&nbsp;        int activitiesMark = 8;</b>
+<b class="fc">&nbsp;        int oralPracticalMark = 0;</b>
+<b class="fc">&nbsp;        int midtermMark = 20;</b>
+<b class="fc">&nbsp;        int finalMark = 59;</b>
+&nbsp;
+<b class="fc">&nbsp;        int expectedValue = 87;</b>
+&nbsp;
+<b class="fc">&nbsp;        int actualValue = Calculator.compute_total_mark(activitiesMark,oralPracticalMark,midtermMark,finalMark);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue,actualValue);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    ////////////// compute grade TEST ///////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    @Test
+&nbsp;    void Test_compute_Grade_valuesBetween97And100_gradeAPlus()
+&nbsp;    {
+<b class="fc">&nbsp;        int grade1 = 100;</b>
+<b class="fc">&nbsp;        String expectedValue1 = &quot;A+&quot;;</b>
+<b class="fc">&nbsp;        String actualValue1 = Calculator.compute_Grade(grade1);</b>
+&nbsp;
+<b class="fc">&nbsp;        int grade2 = 97;</b>
+<b class="fc">&nbsp;        String expectedValue2 = &quot;A+&quot;;</b>
+<b class="fc">&nbsp;        String actualValue2 = Calculator.compute_Grade(grade2);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue1, actualValue1);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue2,actualValue2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_Grade_valuesBetween93And96_gradeA()
+&nbsp;    {
+<b class="fc">&nbsp;        int grade1 = 96;</b>
+<b class="fc">&nbsp;        String expectedValue1 = &quot;A&quot;;</b>
+<b class="fc">&nbsp;        String actualValue1 = Calculator.compute_Grade(grade1);</b>
+&nbsp;
+<b class="fc">&nbsp;        int grade2 = 93;</b>
+<b class="fc">&nbsp;        String expectedValue2 = &quot;A&quot;;</b>
+<b class="fc">&nbsp;        String actualValue2 = Calculator.compute_Grade(grade2);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue1,actualValue1);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue2,actualValue2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_Grade_valuesBetween89And92_gradeAMinus()
+&nbsp;    {
+<b class="fc">&nbsp;        int grade1 = 92;</b>
+<b class="fc">&nbsp;        String expectedValue1 = &quot;A-&quot;;</b>
+<b class="fc">&nbsp;        String actualValue1 = Calculator.compute_Grade(grade1);</b>
+&nbsp;
+<b class="fc">&nbsp;        int grade2 = 89;</b>
+<b class="fc">&nbsp;        String expectedValue2 = &quot;A-&quot;;</b>
+<b class="fc">&nbsp;        String actualValue2 = Calculator.compute_Grade(grade2);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue1,actualValue1);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue2,actualValue2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_Grade_valuesBetween84And88_gradeBPlus()
+&nbsp;    {
+<b class="fc">&nbsp;        int grade1 = 88;</b>
+<b class="fc">&nbsp;        String expectedValue1 = &quot;B+&quot;;</b>
+<b class="fc">&nbsp;        String actualValue1 = Calculator.compute_Grade(grade1);</b>
+&nbsp;
+<b class="fc">&nbsp;        int grade2 = 84;</b>
+<b class="fc">&nbsp;        String expectedValue2 = &quot;B+&quot;;</b>
+<b class="fc">&nbsp;        String actualValue2 = Calculator.compute_Grade(grade2);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue1,actualValue1);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue2,actualValue2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_Grade_valuesBetween80And83_gradeB()
+&nbsp;    {
+<b class="fc">&nbsp;        int grade1 = 83;</b>
+<b class="fc">&nbsp;        String expectedValue1 = &quot;B&quot;;</b>
+<b class="fc">&nbsp;        String actualValue1 = Calculator.compute_Grade(grade1);</b>
+&nbsp;
+<b class="fc">&nbsp;        int grade2 = 80;</b>
+<b class="fc">&nbsp;        String expectedValue2 = &quot;B&quot;;</b>
+<b class="fc">&nbsp;        String actualValue2 = Calculator.compute_Grade(grade2);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue1,actualValue1);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue2,actualValue2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_Grade_valuesBetween76And79_gradeBMinus()
+&nbsp;    {
+<b class="fc">&nbsp;        int grade1 = 79;</b>
+<b class="fc">&nbsp;        String expectedValue1 = &quot;B-&quot;;</b>
+<b class="fc">&nbsp;        String actualValue1 = Calculator.compute_Grade(grade1);</b>
+&nbsp;
+<b class="fc">&nbsp;        int grade2 = 76;</b>
+<b class="fc">&nbsp;        String expectedValue2 = &quot;B-&quot;;</b>
+<b class="fc">&nbsp;        String actualValue2 = Calculator.compute_Grade(grade2);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue1,actualValue1);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue2,actualValue2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_Grade_valuesBetween73And75_gradeCPlus()
+&nbsp;    {
+<b class="fc">&nbsp;        int grade1 = 75;</b>
+<b class="fc">&nbsp;        String expectedValue1 = &quot;C+&quot;;</b>
+<b class="fc">&nbsp;        String actualValue1 = Calculator.compute_Grade(grade1);</b>
+&nbsp;
+<b class="fc">&nbsp;        int grade2 = 73;</b>
+<b class="fc">&nbsp;        String expectedValue2 = &quot;C+&quot;;</b>
+<b class="fc">&nbsp;        String actualValue2 = Calculator.compute_Grade(grade2);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue1,actualValue1);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue2,actualValue2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_Grade_valuesBetween70And72_gradeC()
+&nbsp;    {
+<b class="fc">&nbsp;        int grade1 = 72;</b>
+<b class="fc">&nbsp;        String expectedValue1 = &quot;C&quot;;</b>
+<b class="fc">&nbsp;        String actualValue1 = Calculator.compute_Grade(grade1);</b>
+&nbsp;
+<b class="fc">&nbsp;        int grade2 = 70;</b>
+<b class="fc">&nbsp;        String expectedValue2 = &quot;C&quot;;</b>
+<b class="fc">&nbsp;        String actualValue2 = Calculator.compute_Grade(grade2);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue1,actualValue1);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue2,actualValue2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_Grade_valuesBetween67And69_gradeCMinus()
+&nbsp;    {
+<b class="fc">&nbsp;        int grade1 = 69;</b>
+<b class="fc">&nbsp;        String expectedValue1 = &quot;C-&quot;;</b>
+<b class="fc">&nbsp;        String actualValue1 = Calculator.compute_Grade(grade1);</b>
+&nbsp;
+<b class="fc">&nbsp;        int grade2 = 67;</b>
+<b class="fc">&nbsp;        String expectedValue2 = &quot;C-&quot;;</b>
+<b class="fc">&nbsp;        String actualValue2 = Calculator.compute_Grade(grade2);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue1,actualValue1);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue2,actualValue2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_Grade_valuesBetween64And66_gradeDPlus()
+&nbsp;    {
+<b class="fc">&nbsp;        int grade1 = 66;</b>
+<b class="fc">&nbsp;        String expectedValue1 = &quot;D+&quot;;</b>
+<b class="fc">&nbsp;        String actualValue1 = Calculator.compute_Grade(grade1);</b>
+&nbsp;
+<b class="fc">&nbsp;        int grade2 = 64;</b>
+<b class="fc">&nbsp;        String expectedValue2 = &quot;D+&quot;;</b>
+<b class="fc">&nbsp;        String actualValue2 = Calculator.compute_Grade(grade2);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue1,actualValue1);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue2,actualValue2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_Grade_valuesBetween60And63_gradeD()
+&nbsp;    {
+<b class="fc">&nbsp;        int grade1 = 63;</b>
+<b class="fc">&nbsp;        String expectedValue1 = &quot;D&quot;;</b>
+<b class="fc">&nbsp;        String actualValue1 = Calculator.compute_Grade(grade1);</b>
+&nbsp;
+<b class="fc">&nbsp;        int grade2 = 60;</b>
+<b class="fc">&nbsp;        String expectedValue2 = &quot;D&quot;;</b>
+<b class="fc">&nbsp;        String actualValue2 = Calculator.compute_Grade(grade2);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue1,actualValue1);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue2,actualValue2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_Grade_valuesBetween0And59_gradeF()
+&nbsp;    {
+<b class="fc">&nbsp;        int grade1 = 59;</b>
+<b class="fc">&nbsp;        String expectedValue1 = &quot;F&quot;;</b>
+<b class="fc">&nbsp;        String actualValue1 = Calculator.compute_Grade(grade1);</b>
+&nbsp;
+<b class="fc">&nbsp;        int grade2 = 0;</b>
+<b class="fc">&nbsp;        String expectedValue2 = &quot;F&quot;;</b>
+<b class="fc">&nbsp;        String actualValue2 = Calculator.compute_Grade(grade2);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue1,actualValue1);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue2,actualValue2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    ////////////// compute Gpa TEST ///////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_GPA_gradeAPlus_Gpa4()
+&nbsp;    {
+<b class="fc">&nbsp;        String grade = &quot;A+&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        float expectedValue = (float) 4;</b>
+&nbsp;
+<b class="fc">&nbsp;        float actualValue = Calculator.compute_GPA(grade);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue,actualValue);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_GPA_gradeA_Gpa4()
+&nbsp;    {
+<b class="fc">&nbsp;        String grade = &quot;A&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        float expectedValue = (float) 4;</b>
+&nbsp;
+<b class="fc">&nbsp;        float actualValue = Calculator.compute_GPA(grade);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue,actualValue);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_GPA_gradeAMinus_Gpa3_7()
+&nbsp;    {
+<b class="fc">&nbsp;        String grade = &quot;A-&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        float expectedValue = (float) 3.7;</b>
+&nbsp;
+<b class="fc">&nbsp;        float actualValue = Calculator.compute_GPA(grade);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue,actualValue);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_GPA_gradeBPlus_Gpa3_3()
+&nbsp;    {
+<b class="fc">&nbsp;        String grade = &quot;B+&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        float expectedValue = (float) 3.3;</b>
+&nbsp;
+<b class="fc">&nbsp;        float actualValue = Calculator.compute_GPA(grade);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue,actualValue);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_GPA_gradeB_Gpa3()
+&nbsp;    {
+<b class="fc">&nbsp;        String grade = &quot;B&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        float expectedValue = (float) 3;</b>
+&nbsp;
+<b class="fc">&nbsp;        float actualValue = Calculator.compute_GPA(grade);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue,actualValue);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_GPA_gradeBMinus_Gpa2_7()
+&nbsp;    {
+<b class="fc">&nbsp;        String grade = &quot;B-&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        float expectedValue = (float) 2.7;</b>
+&nbsp;
+<b class="fc">&nbsp;        float actualValue = Calculator.compute_GPA(grade);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue,actualValue);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_GPA_gradeCPlus_Gpa2_3()
+&nbsp;    {
+<b class="fc">&nbsp;        String grade = &quot;C+&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        float expectedValue = (float) 2.3;</b>
+&nbsp;
+<b class="fc">&nbsp;        float actualValue = Calculator.compute_GPA(grade);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue,actualValue);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_GPA_gradeC_Gpa2()
+&nbsp;    {
+<b class="fc">&nbsp;        String grade = &quot;C&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        float expectedValue = (float) 2;</b>
+&nbsp;
+<b class="fc">&nbsp;        float actualValue = Calculator.compute_GPA(grade);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue,actualValue);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    @Tag(&quot;unit&quot;)
+&nbsp;    @Tag(&quot;blackbox&quot;)
+&nbsp;    void Test_compute_GPA_gradeCMinus_Gpa1_7()
+&nbsp;    {
+<b class="fc">&nbsp;        String grade = &quot;C-&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        float expectedValue = (float) 1.7;</b>
+&nbsp;
+<b class="fc">&nbsp;        float actualValue = Calculator.compute_GPA(grade);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue,actualValue);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_GPA_gradeDPlus_Gpa1_3()
+&nbsp;    {
+<b class="fc">&nbsp;        String grade = &quot;D+&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        float expectedValue = (float) 1.3;</b>
+&nbsp;
+<b class="fc">&nbsp;        float actualValue = Calculator.compute_GPA(grade);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue,actualValue);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_GPA_gradeD_Gpa1()
+&nbsp;    {
+<b class="fc">&nbsp;        String grade = &quot;D&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        float expectedValue = (float) 1;</b>
+&nbsp;
+<b class="fc">&nbsp;        float actualValue = Calculator.compute_GPA(grade);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue,actualValue);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void Test_compute_GPA_gradeF_Gpa0()
+&nbsp;    {
+<b class="fc">&nbsp;        String grade = &quot;F&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        float expectedValue = (float) 0;</b>
+&nbsp;
+<b class="fc">&nbsp;        float actualValue = Calculator.compute_GPA(grade);</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(expectedValue,actualValue);</b>
+&nbsp;    }
+&nbsp;    /*
+&nbsp;     ************************************************************
+&nbsp;     ************************************************************
+&nbsp;     * The following Test cases are related to WhiteBox Testing
+&nbsp;     ************************************************************
+&nbsp;     ************************************************************
+&nbsp;     */
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testComputeTotalMark() {
+&nbsp;        // Test with positive values
+<b class="fc">&nbsp;        Assertions.assertEquals(85, Calculator.compute_total_mark(20, 15, 25, 25));</b>
+&nbsp;
+&nbsp;        // Test with zero values
+<b class="fc">&nbsp;        Assertions.assertEquals(0, Calculator.compute_total_mark(0, 0, 0, 0));</b>
+&nbsp;
+&nbsp;        // Test with negative values
+<b class="fc">&nbsp;        Assertions.assertEquals(-20, Calculator.compute_total_mark(-5, -5, -5, -5));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testComputeGrade() {
+&nbsp;        // Test for each grade boundary
+<b class="fc">&nbsp;        Assertions.assertEquals(&quot;A+&quot;, Calculator.compute_Grade(97));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(&quot;A&quot;, Calculator.compute_Grade(93));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(&quot;A-&quot;, Calculator.compute_Grade(89));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(&quot;B+&quot;, Calculator.compute_Grade(84));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(&quot;B&quot;, Calculator.compute_Grade(80));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(&quot;B-&quot;, Calculator.compute_Grade(76));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(&quot;C+&quot;, Calculator.compute_Grade(73));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(&quot;C&quot;, Calculator.compute_Grade(70));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(&quot;C-&quot;, Calculator.compute_Grade(67));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(&quot;D+&quot;, Calculator.compute_Grade(64));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(&quot;D&quot;, Calculator.compute_Grade(60));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(&quot;F&quot;, Calculator.compute_Grade(59));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testComputeGPA() {
+&nbsp;        // Test for each grade to GPA conversion
+<b class="fc">&nbsp;        Assertions.assertEquals((float) 0, Calculator.compute_GPA(&quot;F&quot;));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals((float) 1, Calculator.compute_GPA(&quot;D&quot;));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals((float) 1.3, Calculator.compute_GPA(&quot;D+&quot;));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals((float) 1.7, Calculator.compute_GPA(&quot;C-&quot;));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals((float) 2, Calculator.compute_GPA(&quot;C&quot;));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals((float) 2.3, Calculator.compute_GPA(&quot;C+&quot;));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals((float) 2.7, Calculator.compute_GPA(&quot;B-&quot;));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals((float) 3, Calculator.compute_GPA(&quot;B&quot;));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals((float) 3.3, Calculator.compute_GPA(&quot;B+&quot;));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals((float) 3.7, Calculator.compute_GPA(&quot;A-&quot;));</b>
+<b class="fc">&nbsp;        Assertions.assertEquals((float) 4, Calculator.compute_GPA(&quot;A+&quot;));</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-05-15 21:48</div>
+</div>
+</body>
+</html>

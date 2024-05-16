@@ -1,0 +1,388 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > FileProcessorStudentSubjectTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">MathUtilsIntegrationTest</a>
+</div>
+
+<h1>Coverage Summary for Class: FileProcessorStudentSubjectTest (MathUtilsIntegrationTest)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">FileProcessorStudentSubjectTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (14/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (137/137)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package MathUtilsIntegrationTest;
+&nbsp;
+&nbsp;import MathUtils.FileProcessor;
+&nbsp;import MathUtils.Student;
+&nbsp;import java.util.ArrayList;
+&nbsp;
+&nbsp;import org.junit.jupiter.api.Assertions;
+&nbsp;import org.junit.jupiter.api.Test;
+&nbsp;
+&nbsp;
+&nbsp;// Testing the integration of the File Processor class, Student class and Subject class
+<b class="fc">&nbsp;public class FileProcessorStudentSubjectTest{</b>
+&nbsp;
+&nbsp;
+&nbsp;    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+&nbsp;    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+&nbsp;    // Testing the course&#39;s info like name, code and full mark
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void courseInfoTest1(){
+&nbsp;
+<b class="fc">&nbsp;        FileProcessor fp = new FileProcessor(&quot;inputTestData\\inputTestData1.txt&quot;);</b>
+<b class="fc">&nbsp;        String actualCourseName = fp.getSubject().getName();</b>
+<b class="fc">&nbsp;        String actualCourseCode = fp.getSubject().getCode();</b>
+<b class="fc">&nbsp;        int actualCourseFullMark = fp.getSubject().getFullMark();</b>
+&nbsp;
+<b class="fc">&nbsp;        String expectedCourseName = &quot;Mathematics&quot;;</b>
+<b class="fc">&nbsp;        String expectedCourseCode = &quot;MAT101s&quot;;</b>
+<b class="fc">&nbsp;        int expectedCourseFullMark = 100;</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(actualCourseName, expectedCourseName);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(actualCourseCode, expectedCourseCode);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(actualCourseFullMark, expectedCourseFullMark);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void courseInfoTest2(){
+&nbsp;
+<b class="fc">&nbsp;        FileProcessor fp = new FileProcessor(&quot;inputTestData\\inputTestData2.txt&quot;);</b>
+<b class="fc">&nbsp;        String actualCourseName = fp.getSubject().getName();</b>
+<b class="fc">&nbsp;        String actualCourseCode = fp.getSubject().getCode();</b>
+<b class="fc">&nbsp;        int actualCourseFullMark = fp.getSubject().getFullMark();</b>
+&nbsp;
+<b class="fc">&nbsp;        String expectedCourseName = &quot;SoftwareTesting&quot;;</b>
+<b class="fc">&nbsp;        String expectedCourseCode = &quot;SWT102s&quot;;</b>
+<b class="fc">&nbsp;        int expectedCourseFullMark = 100;</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(actualCourseName, expectedCourseName);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(actualCourseCode, expectedCourseCode);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(actualCourseFullMark, expectedCourseFullMark);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void courseInfoTest3(){
+&nbsp;
+<b class="fc">&nbsp;        FileProcessor fp = new FileProcessor(&quot;inputTestData\\inputTestData3.txt&quot;);</b>
+<b class="fc">&nbsp;        String actualCourseName = fp.getSubject().getName();</b>
+<b class="fc">&nbsp;        String actualCourseCode = fp.getSubject().getCode();</b>
+<b class="fc">&nbsp;        int actualCourseFullMark = fp.getSubject().getFullMark();</b>
+&nbsp;
+<b class="fc">&nbsp;        String expectedCourseName = &quot;Database&quot;;</b>
+<b class="fc">&nbsp;        String expectedCourseCode = &quot;DTB201&quot;;</b>
+<b class="fc">&nbsp;        int expectedCourseFullMark = 100;</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(actualCourseName, expectedCourseName);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(actualCourseCode, expectedCourseCode);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(actualCourseFullMark, expectedCourseFullMark);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void courseInfoTest4(){
+&nbsp;
+<b class="fc">&nbsp;        FileProcessor fp = new FileProcessor(&quot;inputTestData\\inputTestData8.txt&quot;);</b>
+<b class="fc">&nbsp;        String actualCourseName = fp.getSubject().getName();</b>
+<b class="fc">&nbsp;        String actualCourseCode = fp.getSubject().getCode();</b>
+<b class="fc">&nbsp;        int actualCourseFullMark = fp.getSubject().getFullMark();</b>
+&nbsp;
+<b class="fc">&nbsp;        String expectedCourseName = &quot;Physics&quot;;</b>
+<b class="fc">&nbsp;        String expectedCourseCode = &quot;PHY109s&quot;;</b>
+<b class="fc">&nbsp;        int expectedCourseFullMark = 100;</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(actualCourseName, expectedCourseName);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(actualCourseCode, expectedCourseCode);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(actualCourseFullMark, expectedCourseFullMark);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void courseInfoTest5(){
+&nbsp;
+<b class="fc">&nbsp;        FileProcessor fp = new FileProcessor(&quot;inputTestData\\inputTestData9.txt&quot;);</b>
+<b class="fc">&nbsp;        String actualCourseName = fp.getSubject().getName();</b>
+<b class="fc">&nbsp;        String actualCourseCode = fp.getSubject().getCode();</b>
+<b class="fc">&nbsp;        int actualCourseFullMark = fp.getSubject().getFullMark();</b>
+&nbsp;
+<b class="fc">&nbsp;        String expectedCourseName = &quot;Statistics&quot;;</b>
+<b class="fc">&nbsp;        String expectedCourseCode = &quot;STA181s&quot;;</b>
+<b class="fc">&nbsp;        int expectedCourseFullMark = 100;</b>
+&nbsp;
+<b class="fc">&nbsp;        Assertions.assertEquals(actualCourseName, expectedCourseName);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(actualCourseCode, expectedCourseCode);</b>
+<b class="fc">&nbsp;        Assertions.assertEquals(actualCourseFullMark, expectedCourseFullMark);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void courseInfoTest6(){
+&nbsp;        // empty file
+<b class="fc">&nbsp;        FileProcessor fp = new FileProcessor(&quot;inputTestData\\inputTestData10.txt&quot;);</b>
+<b class="fc">&nbsp;        Assertions.assertNull(fp.getSubject());</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void courseInfoTest7(){
+&nbsp;        // file doesn&#39;t exist
+<b class="fc">&nbsp;        FileProcessor fp = new FileProcessor(&quot;inputTestData\\inputTestData200.txt&quot;);</b>
+<b class="fc">&nbsp;        Assertions.assertNull(fp.getSubject());</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+&nbsp;    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+&nbsp;    // Testing the enrolled students&#39;s info
+&nbsp;
+&nbsp;    
+&nbsp;    @Test
+&nbsp;    void studentInfoTest1(){
+&nbsp;
+<b class="fc">&nbsp;        FileProcessor fp = new FileProcessor(&quot;inputTestData\\inputTestData1.txt&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        ArrayList &lt;Student&gt; actualEnrolledStudents = fp.getSubject().getEnrolledStudents();</b>
+&nbsp;
+<b class="fc">&nbsp;        Student s1 = new Student(&quot;Alice&quot;,&quot;1234567a&quot;,8,9,15,35);</b>
+<b class="fc">&nbsp;        Student s2 = new Student(&quot;Bob&quot;,&quot;1234567b&quot;,7,8,16,34);</b>
+<b class="fc">&nbsp;        Student s3 = new Student(&quot;Charlie&quot;,&quot;1234567c&quot;,9,8,18,31);</b>
+<b class="fc">&nbsp;        ArrayList &lt;Student&gt; expectedEnrolledStudents = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;        expectedEnrolledStudents.add(s1);</b>
+<b class="fc">&nbsp;        expectedEnrolledStudents.add(s2);</b>
+<b class="fc">&nbsp;        expectedEnrolledStudents.add(s3);</b>
+&nbsp;
+<b class="fc">&nbsp;        for(int i = 0; i &lt; 3; i++){</b>
+&nbsp;
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getName(), expectedEnrolledStudents.get(i).getName());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getNumber(), expectedEnrolledStudents.get(i).getNumber());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getActivitiesMark(), expectedEnrolledStudents.get(i).getActivitiesMark());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getPracticalMark(), expectedEnrolledStudents.get(i).getPracticalMark());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getMidtermExamMark(), expectedEnrolledStudents.get(i).getMidtermExamMark());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getFinalExamMark(), expectedEnrolledStudents.get(i).getFinalExamMark());</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void studentInfoTest3(){
+&nbsp;
+<b class="fc">&nbsp;        FileProcessor fp = new FileProcessor(&quot;inputTestData\\inputTestData3.txt&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        ArrayList &lt;Student&gt; actualEnrolledStudents = fp.getSubject().getEnrolledStudents();</b>
+&nbsp;
+<b class="fc">&nbsp;        Student s1 = new Student(&quot;Grace&quot;,&quot;1234567g&quot;,7,8,14,29);</b>
+<b class="fc">&nbsp;        Student s2 = new Student(&quot;Henry Kave&quot;,&quot;1234567h&quot;,9,8,18,35);</b>
+<b class="fc">&nbsp;        Student s3 = new Student(&quot;Isabel&quot;,&quot;1234567i&quot;,8,9,17,32);</b>
+<b class="fc">&nbsp;        Student s4 = new Student(&quot;Frank&quot;,&quot;1234567f&quot;,8,9,15,33);</b>
+<b class="fc">&nbsp;        ArrayList &lt;Student&gt; expectedEnrolledStudents = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;        expectedEnrolledStudents.add(s1);</b>
+<b class="fc">&nbsp;        expectedEnrolledStudents.add(s2);</b>
+<b class="fc">&nbsp;        expectedEnrolledStudents.add(s3);</b>
+<b class="fc">&nbsp;        expectedEnrolledStudents.add(s4);</b>
+&nbsp;
+<b class="fc">&nbsp;        for(int i = 0; i &lt; 4; i++){</b>
+&nbsp;
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getName(), expectedEnrolledStudents.get(i).getName());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getNumber(), expectedEnrolledStudents.get(i).getNumber());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getActivitiesMark(), expectedEnrolledStudents.get(i).getActivitiesMark());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getPracticalMark(), expectedEnrolledStudents.get(i).getPracticalMark());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getMidtermExamMark(), expectedEnrolledStudents.get(i).getMidtermExamMark());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getFinalExamMark(), expectedEnrolledStudents.get(i).getFinalExamMark());</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void studentInfoTest2(){
+&nbsp;
+<b class="fc">&nbsp;        FileProcessor fp = new FileProcessor(&quot;inputTestData\\inputTestData2.txt&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        ArrayList &lt;Student&gt; actualEnrolledStudents = fp.getSubject().getEnrolledStudents();</b>
+&nbsp;
+<b class="fc">&nbsp;        Student s1 = new Student(&quot;David&quot;,&quot;1234567d&quot;,9,8,17,35);</b>
+<b class="fc">&nbsp;        Student s2 = new Student(&quot;Eve&quot;,&quot;1234567e&quot;,8,9,16,32);</b>
+<b class="fc">&nbsp;        ArrayList &lt;Student&gt; expectedEnrolledStudents = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;        expectedEnrolledStudents.add(s1);</b>
+<b class="fc">&nbsp;        expectedEnrolledStudents.add(s2);</b>
+&nbsp;
+<b class="fc">&nbsp;        for(int i = 0; i &lt; 2; i++){</b>
+&nbsp;
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getName(), expectedEnrolledStudents.get(i).getName());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getNumber(), expectedEnrolledStudents.get(i).getNumber());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getActivitiesMark(), expectedEnrolledStudents.get(i).getActivitiesMark());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getPracticalMark(), expectedEnrolledStudents.get(i).getPracticalMark());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getMidtermExamMark(), expectedEnrolledStudents.get(i).getMidtermExamMark());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getFinalExamMark(), expectedEnrolledStudents.get(i).getFinalExamMark());</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void studentInfoTest4(){
+&nbsp;
+<b class="fc">&nbsp;        FileProcessor fp = new FileProcessor(&quot;inputTestData\\inputTestData7.txt&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        ArrayList &lt;Student&gt; actualEnrolledStudents = fp.getSubject().getEnrolledStudents();</b>
+&nbsp;
+<b class="fc">&nbsp;        Student s1 = new Student(&quot;Ursula&quot;, &quot;1234567u&quot;,8,9,16, 34);</b>
+<b class="fc">&nbsp;        Student s2 = new Student(&quot;Victoria&quot;,&quot;1234567v&quot;,9,8,17, 31);</b>
+<b class="fc">&nbsp;        Student s3 = new Student(&quot;William&quot;,&quot;1234567w&quot;,9, 8,18, 35);</b>
+<b class="fc">&nbsp;        ArrayList &lt;Student&gt; expectedEnrolledStudents = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;        expectedEnrolledStudents.add(s1);</b>
+<b class="fc">&nbsp;        expectedEnrolledStudents.add(s2);</b>
+<b class="fc">&nbsp;        expectedEnrolledStudents.add(s3);</b>
+&nbsp;
+<b class="fc">&nbsp;        for(int i = 0; i &lt; 3; i++){</b>
+&nbsp;
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getName(), expectedEnrolledStudents.get(i).getName());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getNumber(), expectedEnrolledStudents.get(i).getNumber());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getActivitiesMark(), expectedEnrolledStudents.get(i).getActivitiesMark());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getPracticalMark(), expectedEnrolledStudents.get(i).getPracticalMark());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getMidtermExamMark(), expectedEnrolledStudents.get(i).getMidtermExamMark());</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getFinalExamMark(), expectedEnrolledStudents.get(i).getFinalExamMark());</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void studentInfoTest5(){
+&nbsp;
+<b class="fc">&nbsp;        FileProcessor fp = new FileProcessor(&quot;inputTestData\\inputTestData11.txt&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        ArrayList &lt;Student&gt; actualEnrolledStudents = fp.getSubject().getEnrolledStudents();</b>
+&nbsp;
+<b class="fc">&nbsp;        for(int i = 0; i &lt; 3; i++){</b>
+&nbsp;
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getName(), &quot;Info given was Invalid!&quot;);</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getNumber(), &quot;Info given was Invalid!&quot;);</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getActivitiesMark(), (float) -1);</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getPracticalMark(), (float) -1);</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getMidtermExamMark(), (float) -1);</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getFinalExamMark(), (float) -1);</b>
+&nbsp;
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    void studentInfoTest6(){
+&nbsp;
+<b class="fc">&nbsp;        FileProcessor fp = new FileProcessor(&quot;inputTestData\\inputTestData12.txt&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        ArrayList &lt;Student&gt; actualEnrolledStudents = fp.getSubject().getEnrolledStudents();</b>
+&nbsp;
+<b class="fc">&nbsp;        for(int i = 0; i &lt; 3; i++){</b>
+&nbsp;
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getName(), &quot;Info given was Invalid!&quot;);</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getNumber(), &quot;Info given was Invalid!&quot;);</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getActivitiesMark(), (float) -1);</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getPracticalMark(), (float) -1);</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getMidtermExamMark(), (float) -1);</b>
+<b class="fc">&nbsp;            Assertions.assertEquals(actualEnrolledStudents.get(i).getFinalExamMark(), (float) -1);</b>
+&nbsp;
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;       
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-05-15 21:48</div>
+</div>
+</body>
+</html>

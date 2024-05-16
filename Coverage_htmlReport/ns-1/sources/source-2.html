@@ -1,0 +1,169 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > FileProcessor</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">MathUtils</a>
+</div>
+
+<h1>Coverage Summary for Class: FileProcessor (MathUtils)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">FileProcessor</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (29/29)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package MathUtils;
+&nbsp;
+&nbsp;import java.io.BufferedReader;
+&nbsp;import java.io.FileNotFoundException;
+&nbsp;import java.io.FileReader;
+&nbsp;import java.util.ArrayList;
+&nbsp;
+&nbsp;public class FileProcessor {
+&nbsp;    
+&nbsp;    
+&nbsp;    private Subject subject;
+&nbsp;
+&nbsp;    // constructor
+<b class="fc">&nbsp;    public FileProcessor(String fileName) {</b>
+&nbsp;
+<b class="fc">&nbsp;        ArrayList&lt;Student&gt; students = new ArrayList&lt;&gt;();</b>
+&nbsp;
+&nbsp;        try {
+<b class="fc">&nbsp;            FileReader fileReader = new FileReader(fileName);</b>
+<b class="fc">&nbsp;            BufferedReader bufferedReader = new BufferedReader(fileReader);</b>
+&nbsp;
+&nbsp;            // Reading the first line for subject information
+<b class="fc">&nbsp;            String subjectLine = bufferedReader.readLine();</b>
+<b class="fc">&nbsp;            String[] subjectInfo = subjectLine.split(&quot;,&quot;);</b>
+<b class="fc">&nbsp;            String subjectName = subjectInfo[0];</b>
+<b class="fc">&nbsp;            String subjectCode = subjectInfo[1];</b>
+<b class="fc">&nbsp;            int fullMarks = Integer.parseInt(subjectInfo[2]);</b>
+&nbsp;
+<b class="fc">&nbsp;            subject = new Subject(subjectName,subjectCode,fullMarks);</b>
+&nbsp;            
+&nbsp;            // Reading student information
+&nbsp;            String line;
+<b class="fc">&nbsp;            while ((line = bufferedReader.readLine()) != null) {</b>
+<b class="fc">&nbsp;                String[] studentInfo = line.split(&quot;,&quot;);</b>
+<b class="fc">&nbsp;                String studentName = studentInfo[0];</b>
+<b class="fc">&nbsp;                String studentNumber = studentInfo[1];</b>
+<b class="fc">&nbsp;                int activitiesMark = Integer.parseInt(studentInfo[2]);</b>
+<b class="fc">&nbsp;                int practicalMark = Integer.parseInt(studentInfo[3]);</b>
+<b class="fc">&nbsp;                int midtermExamMark = Integer.parseInt(studentInfo[4]);</b>
+<b class="fc">&nbsp;                int finalExamMark = Integer.parseInt(studentInfo[5]);</b>
+&nbsp;
+&nbsp;                // Create a Student object and add it to the list
+<b class="fc">&nbsp;                Student student = new Student(studentName, studentNumber, activitiesMark, practicalMark, midtermExamMark, finalExamMark);</b>
+<b class="fc">&nbsp;                students.add(student);</b>
+<b class="fc">&nbsp;            }</b>
+&nbsp;
+<b class="fc">&nbsp;            subject.setEnrolledStudents(students);</b>
+&nbsp;            
+&nbsp;            // Close the BufferedReader
+<b class="fc">&nbsp;            bufferedReader.close();</b>
+&nbsp;            
+&nbsp;        }
+<b class="fc">&nbsp;        catch(FileNotFoundException e){</b>
+<b class="fc">&nbsp;            System.out.print(&quot;File was not found!&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        catch (Exception e) {</b>
+<b class="fc">&nbsp;            System.out.print(&quot;Error, Could not process the file!&quot;);</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;        
+&nbsp;    }
+&nbsp;    
+&nbsp;    public Subject getSubject() {
+<b class="fc">&nbsp;        return subject;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-05-15 21:48</div>
+</div>
+</body>
+</html>

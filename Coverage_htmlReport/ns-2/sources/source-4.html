@@ -1,0 +1,721 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SubjectTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">MathUtilsTest</a>
+</div>
+
+<h1>Coverage Summary for Class: SubjectTest (MathUtilsTest)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SubjectTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    97.3%
+  </span>
+  <span class="absValue">
+    (36/37)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    99.6%
+  </span>
+  <span class="absValue">
+    (270/271)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package MathUtilsTest;
+&nbsp;
+&nbsp;import static org.junit.Assert.*;
+&nbsp;
+&nbsp;import MathUtils.Student;
+&nbsp;import MathUtils.Subject;
+&nbsp;import org.junit.Before;
+&nbsp;import org.junit.Test;
+&nbsp;import org.junit.jupiter.api.AfterEach;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.io.ByteArrayOutputStream;
+&nbsp;import java.io.PrintStream;
+&nbsp;
+<b class="fc">&nbsp;public class SubjectTest {</b>
+&nbsp;
+&nbsp;   Subject sub ;
+&nbsp;    int temp;
+&nbsp;
+&nbsp;    @Before
+&nbsp;    public void setup(){
+<b class="fc">&nbsp;        sub = new Subject(null, null , 0 );</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @AfterEach
+&nbsp;    public void cleanup(){
+<b class="nc">&nbsp;        temp = 0;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    /////////////// SUBJECT NAME TEST ///////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_subjecttName_alphWithSpace() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setName(&quot;Intro to Electronics&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;correct subject name info&quot; ;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_subjecttName_numbersonly() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setName(&quot;1234&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid subject name containing numbers&quot; ;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_subjecttName_numbers_with_alphabetic() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setName(&quot;electronics1234&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid subject name containing numbers&quot; ;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_subjecttName_alphabetic_only() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setName(&quot;electronics&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid name containing Alphabetic only&quot; ;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_subjecttName_Start_with_spaces() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setName(&quot; testing&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid subject name start with space&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_subjecttName_Empty_name() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setName(&quot;&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid subject name empty&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_subjecttName_with_special_symbol_name() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setName(&quot;testing@&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid subject name contains special symbol&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    /////////////// SUBJECT CODE TEST ///////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_subject_CODE_with_6_RIGHT_CHAR() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setCode(&quot;ABC123&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;Valid Subject Code&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_subject_CODE_with_7_RIGHT_CHAR() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setCode(&quot;ABC123s&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;Valid Subject Code&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_subject_CODE_with_All_alphabetic() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setCode(&quot;ABCDEF&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid subject code&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_subject_CODE_with_All_Digits() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setCode(&quot;123456&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid subject code&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_subject_CODE_with_All_alphabetic_7() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setCode(&quot;ABCDEFG&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid subject code&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_subject_CODE_with_All_Digits_7() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setCode(&quot;ABCDEFG&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid subject code&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_subject_CODE_with_alphabetic_in_last3() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setCode(&quot;ABC1D3&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid subject code&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_subject_CODE_with_Digit_in_first3 () {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setCode(&quot;A5C123&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid subject code&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_subject_CODE_with_special_character () {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setCode(&quot;ABC@23&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid subject code&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_subject_CODE_with_space() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setCode(&quot;ABC 23&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid subject code&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_subject_CODE_with_wrong_lenth() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setCode(&quot;ABC12&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid subject code Length&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_subject_CODE_Empty() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setCode(&quot;&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid subject code empty&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    ////////////////FULL MARK TESTING ///////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_fullmark_right_in() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setFullMark(80);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;full mark valid input&quot;;</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_fullmark_out_of_range() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setFullMark(150);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;full mark out of range&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_fullmark_cornercase_99() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setFullMark(99);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;full mark valid input&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_fullmark_cornercase_101() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setFullMark(101);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;full mark out of range&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_fullmark_cornercase_minus1() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setFullMark(-1);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;full mark out of range&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_fullmark_cornercase_1() {
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = sub.setFullMark(1);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;full mark valid input&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void getName() {
+<b class="fc">&nbsp;        String expected = &quot;electronic cse&quot;;</b>
+<b class="fc">&nbsp;        temp = sub.setName(expected);</b>
+<b class="fc">&nbsp;        String actual = sub.getName();</b>
+<b class="fc">&nbsp;        assertEquals(expected,actual);</b>
+<b class="fc">&nbsp;        assertEquals(1,temp);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void getCode() {
+<b class="fc">&nbsp;        String expected = &quot;ABC123&quot;;</b>
+<b class="fc">&nbsp;        temp = sub.setCode(expected);</b>
+<b class="fc">&nbsp;        String actual = sub.getCode();</b>
+<b class="fc">&nbsp;        assertEquals(expected,actual);</b>
+<b class="fc">&nbsp;        assertEquals(1,temp);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void getFullMark() {
+<b class="fc">&nbsp;        int expected = 80;</b>
+<b class="fc">&nbsp;        temp = sub.setFullMark(expected);</b>
+<b class="fc">&nbsp;        int actual = sub.getFullMark();</b>
+<b class="fc">&nbsp;        assertEquals(expected,actual);</b>
+<b class="fc">&nbsp;        assertEquals(1,temp);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;//
+&nbsp;//    @Test
+&nbsp;//    public void getEnrolledStudents() {
+&nbsp;//    }
+&nbsp;//
+&nbsp;//    @Test
+&nbsp;//    public void setEnrolledStudents() {
+&nbsp;//    }
+&nbsp;
+&nbsp;    /*
+&nbsp;     ************************************************************
+&nbsp;     ************************************************************
+&nbsp;     * The following Test cases are related to WhiteBox Testing
+&nbsp;     ************************************************************
+&nbsp;     ************************************************************
+&nbsp;     */
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testConstructor() {
+&nbsp;        // Create a Subject object using the constructor
+<b class="fc">&nbsp;        Subject subject = new Subject(&quot;Math&quot;, &quot;MATH01&quot;, 100);</b>
+&nbsp;        // Check if the object is not null, indicating successful creation
+<b class="fc">&nbsp;        assertNotNull(subject);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetName() {
+&nbsp;        // Create a Subject object for testing
+<b class="fc">&nbsp;        Subject subject = new Subject(&quot;Math&quot;, &quot;MATH01&quot;, 100);</b>
+&nbsp;
+&nbsp;        // Test invalid input for setName method
+<b class="fc">&nbsp;        assertEquals(0, subject.setName(&quot;&quot;));         // empty name</b>
+<b class="fc">&nbsp;        assertEquals(0, subject.setName(&quot; Math&quot;));    // name starting with space</b>
+<b class="fc">&nbsp;        assertEquals(0, subject.setName(&quot;123&quot;));      // name containing numbers</b>
+<b class="fc">&nbsp;        assertEquals(0, subject.setName(&quot;Math$&quot;));    // name containing special characters</b>
+<b class="fc">&nbsp;        assertEquals(0, subject.setName(&quot;Mathematics&quot;)); // name length exceeds limit</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetCode() {
+&nbsp;        // Create a Subject object for testing
+<b class="fc">&nbsp;        Subject subject = new Subject(&quot;Math&quot;, &quot;MATH01&quot;, 100);</b>
+&nbsp;
+&nbsp;        // Test invalid input for setCode method
+<b class="fc">&nbsp;        assertEquals(0, subject.setCode(&quot;&quot;));        // empty code</b>
+<b class="fc">&nbsp;        assertEquals(0, subject.setCode(&quot;123&quot;));      // code containing only numbers</b>
+<b class="fc">&nbsp;        assertEquals(0, subject.setCode(&quot;ABC&quot;));      // code containing only letters</b>
+<b class="fc">&nbsp;        assertEquals(0, subject.setCode(&quot;MATH&quot;));     // code length less than 6</b>
+<b class="fc">&nbsp;        assertEquals(0, subject.setCode(&quot;MATH001&quot;));  // code length more than 7</b>
+<b class="fc">&nbsp;        assertEquals(0, subject.setCode(&quot;MATH01 &quot;));  // code containing trailing space</b>
+<b class="fc">&nbsp;        assertEquals(0, subject.setCode(&quot;MATH01s&quot;));  // code containing &#39;s&#39; in the wrong position</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetFullMark() {
+&nbsp;        // Create a Subject object for testing
+<b class="fc">&nbsp;        Subject subject = new Subject(&quot;Math&quot;, &quot;MATH01&quot;, 100);</b>
+&nbsp;
+&nbsp;        // Test invalid input for setFullMark method
+<b class="fc">&nbsp;        assertEquals(0, subject.setFullMark(120));   // full mark greater than 100</b>
+<b class="fc">&nbsp;        assertEquals(0, subject.setFullMark(-10));    // full mark less than 0</b>
+&nbsp;
+&nbsp;        // Test valid input for setFullMark method
+<b class="fc">&nbsp;        assertEquals(1, subject.setFullMark(90));     // full mark within range</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testGetters() {
+&nbsp;        // Create a Subject object for testing
+<b class="fc">&nbsp;        Subject subject = new Subject(&quot;Math&quot;, &quot;MATH01&quot;, 100);</b>
+&nbsp;
+&nbsp;        // Test getters for subject properties
+<b class="fc">&nbsp;        assertEquals(&quot;Math&quot;, subject.getName());     // test getName method</b>
+<b class="fc">&nbsp;        assertEquals(&quot;MATH01&quot;, subject.getCode());   // test getCode method</b>
+<b class="fc">&nbsp;        assertEquals(100, subject.getFullMark());    // test getFullMark method</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetEnrolledStudents() {
+&nbsp;        // Create a Subject object for testing
+<b class="fc">&nbsp;        Subject subject = new Subject(&quot;Math&quot;, &quot;MATH01&quot;, 100);</b>
+<b class="fc">&nbsp;        ArrayList&lt;Student&gt; students = new ArrayList&lt;&gt;();</b>
+&nbsp;
+&nbsp;        // Test setEnrolledStudents method
+<b class="fc">&nbsp;        subject.setEnrolledStudents(students);       // set enrolled students</b>
+<b class="fc">&nbsp;        assertEquals(students, subject.getEnrolledStudents()); // verify if set correctly</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-05-13 18:26</div>
+</div>
+</body>
+</html>

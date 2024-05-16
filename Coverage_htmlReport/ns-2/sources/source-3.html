@@ -1,0 +1,971 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > StudentTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">MathUtilsTest</a>
+</div>
+
+<h1>Coverage Summary for Class: StudentTest (MathUtilsTest)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">StudentTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    98.2%
+  </span>
+  <span class="absValue">
+    (54/55)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    99.8%
+  </span>
+  <span class="absValue">
+    (654/655)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package MathUtilsTest;
+&nbsp;import MathUtils.Student;
+&nbsp;import org.junit.Before;
+&nbsp;import org.junit.Test;
+&nbsp;import org.junit.jupiter.api.AfterEach;
+&nbsp;
+&nbsp;
+&nbsp;import java.io.ByteArrayOutputStream;
+&nbsp;import java.io.PrintStream;
+&nbsp;
+&nbsp;import static org.junit.Assert.*;
+&nbsp;
+<b class="fc">&nbsp;public class StudentTest {</b>
+&nbsp;
+&nbsp;    private Student st ;
+&nbsp;    int temp;
+&nbsp;
+&nbsp;    @Before
+&nbsp;    public void setup(){
+<b class="fc">&nbsp;     st = new Student(null , null , 0 , 0 , 0 , 0);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @AfterEach
+&nbsp;    public void cleanup(){
+<b class="nc">&nbsp;        temp = 0;</b>
+&nbsp;    }
+&nbsp;    @Test
+&nbsp;    public void testGetGpa() {
+&nbsp;        // Test the initial GPA value
+<b class="fc">&nbsp;        assertEquals(0.0f, st.getGpa(), 0.001f);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void testSetGrade() {</b>
+<b class="fc">&nbsp;        // Set a grade and verify it</b>
+<b class="fc">&nbsp;        st.setGrade(&quot;A&quot;);</b>
+<b class="fc">&nbsp;        assertEquals(&quot;A&quot;, st.getGrade());</b>
+&nbsp;    }
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;</b>
+&nbsp;    @Test
+<b class="fc">&nbsp;    public void test_setGpa() {</b>
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;        ByteArrayOutputStream baos = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(baos);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        st.setGpa(3.7f);</b>
+&nbsp;
+<b class="fc">&nbsp;        String actual = baos.toString();</b>
+<b class="fc">&nbsp;        String expected = &quot;OK&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected,actual);</b>
+&nbsp;    }
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;    /////////////////////////////////////////////////</b>
+&nbsp;    /////////////// STUDENT NAME TEST ///////////////
+<b class="fc">&nbsp;    /////////////////////////////////////////////////</b>
+<b class="fc">&nbsp;</b>
+&nbsp;    @Test
+<b class="fc">&nbsp;    public void test_studentName_alphWithSpace() {</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setName(&quot;Hassan Khaled&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;correct student name info&quot; ;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;    @Test
+<b class="fc">&nbsp;    public void test_studentName_numbersonly() {</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setName(&quot;1234&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid student name containing numbers&quot; ;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;    @Test
+<b class="fc">&nbsp;    public void test_studentName_numbers_with_alphabetic() {</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setName(&quot;hk1234&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid student name containing numbers&quot; ;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;    @Test
+<b class="fc">&nbsp;    public void test_studentName_alphabetic_only() {</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setName(&quot;Hassan&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid name containing Alphabetic only&quot; ;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;</b>
+&nbsp;    @Test
+<b class="fc">&nbsp;    public void test_studentName_Start_with_spaces() {</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setName(&quot; Hassan&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid student name start with space&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;</b>
+&nbsp;    @Test
+<b class="fc">&nbsp;    public void test_studentName_Empty_name() {</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setName(&quot;&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid student name empty&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;</b>
+&nbsp;    @Test
+<b class="fc">&nbsp;    public void test_studentName_with_special_symbol_name() {</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setName(&quot;hassan@&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid student name contains special symbol&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;    /////////////////////////////////////////////////
+<b class="fc">&nbsp;    /////////////// STUDENT NUMBER TEST /////////////</b>
+<b class="fc">&nbsp;    /////////////////////////////////////////////////</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_studentNumber_with_8_num() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setNumber(&quot;12345678&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;Valid Number&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_studentNumber_with_7_num_1_alph() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setNumber(&quot;1234567H&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;Valid Number&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_studentNumber_with_7_numers_only() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setNumber(&quot;1234567&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid width number&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_studentNumber_with_alphabetic() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setNumber(&quot;12H45678&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid number contains alphabetic&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_studentNumber_with_special_symbol() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setNumber(&quot;@1245678&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid number contains special symbol&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_studentNumber_with_spaces() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setNumber(&quot;123456 8&quot;);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid number contains space&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;</b>
+&nbsp;    /////////////////////////////////////////////////
+<b class="fc">&nbsp;    //////////////ACTIVITY MARKS TEST////////////////</b>
+<b class="fc">&nbsp;    /////////////////////////////////////////////////</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_ActivitiesMark_in_range() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setActivitiesMark(5);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;Valid ActivityMark&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_ActivitiesMark_corner_case_0() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setActivitiesMark(0);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;Valid ActivityMark&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_ActivitiesMark_corner_case_10() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setActivitiesMark(10);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;Valid ActivityMark&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_ActivitiesMark_corner_case_11() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setActivitiesMark(11);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid ActivityMark out of range&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_ActivitiesMark_corner_case_minus1() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setActivitiesMark(-1);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid ActivityMark out of range&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_ActivitiesMark_out_of_range() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setActivitiesMark(50);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid ActivityMark out of range&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+&nbsp;    }
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;</b>
+&nbsp;    /////////////////////////////////////////////////
+<b class="fc">&nbsp;    //////////////Practical MARKS TEST///////////////</b>
+<b class="fc">&nbsp;    /////////////////////////////////////////////////</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_PracticalMark_in_range() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setPracticalMark(5);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;Valid PracticalMark&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_PracticalMark_corner_case_0() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setPracticalMark(0);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;Valid PracticalMark&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_PracticalMark_corner_case_10() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setPracticalMark(10);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;Valid PracticalMark&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_PracticalMark_corner_case_11() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setPracticalMark(11);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid PracticalMark out of range&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_PracticalMark_corner_case_minus1() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setPracticalMark(-1);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid PracticalMark out of range&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_PracticalMark_out_of_range() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setPracticalMark(50);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid PracticalMark out of range&quot;;</b>
+&nbsp;
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;</b>
+&nbsp;    /////////////////////////////////////////////////
+<b class="fc">&nbsp;    //////////////Midterm MARKS TEST///////////////</b>
+<b class="fc">&nbsp;    /////////////////////////////////////////////////</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_MidtermlMark_in_range() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setMidtermExamMark(10);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;Valid MidtermMark&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_MidtermlMark_corner_case_0() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setMidtermExamMark(0);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;Valid MidtermMark&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_MidtermlMark_corner_case_20() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setMidtermExamMark(20);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;Valid MidtermMark&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_MidtermlMark_corner_case_21() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setMidtermExamMark(21);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid MidtermMark out of range&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_MidtermlMark_corner_case_minus1() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setMidtermExamMark(-1);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid MidtermMark out of range&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_MidtermlMark_out_of_range() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setMidtermExamMark(50);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid MidtermMark out of range&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;    /////////////////////////////////////////////////
+<b class="fc">&nbsp;    //////////////FINAL MARKS TEST///////////////////</b>
+<b class="fc">&nbsp;    /////////////////////////////////////////////////</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_FinalMark_in_range() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setFinalExamMark(10);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;Valid FinalMark&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_FinalMark_corner_case_0() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setFinalExamMark(0);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;Valid FinalMark&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_FinalMark_corner_case_60() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setFinalExamMark(60);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 1;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;Valid FinalMark&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_FinalMark_corner_case_61() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setFinalExamMark(61);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid FinalMark out of range&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_FinalMark_corner_case_minus1() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setFinalExamMark(-1);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid FinalMark out of range&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+<b class="fc">&nbsp;</b>
+&nbsp;
+<b class="fc">&nbsp;    @Test</b>
+<b class="fc">&nbsp;    public void test_FinalMark_out_of_range() {</b>
+<b class="fc">&nbsp;        ByteArrayOutputStream boas = new ByteArrayOutputStream();</b>
+<b class="fc">&nbsp;        PrintStream printStream = new PrintStream(boas);</b>
+<b class="fc">&nbsp;        System.setOut(printStream);</b>
+&nbsp;
+<b class="fc">&nbsp;        int actual1 = st.setFinalExamMark(80);</b>
+<b class="fc">&nbsp;        String actual2 = boas.toString();</b>
+&nbsp;
+<b class="fc">&nbsp;        int expected1 = 0;</b>
+<b class="fc">&nbsp;        String expected2 = &quot;invalid FinalMark out of range&quot;;</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        assertEquals(expected1,actual1);</b>
+<b class="fc">&nbsp;        assertEquals(expected2,actual2);</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_get_student_Name() {
+<b class="fc">&nbsp;        String expected = &quot;hassan khaled&quot;;</b>
+<b class="fc">&nbsp;        temp = st.setName(expected);</b>
+<b class="fc">&nbsp;        String actual = st.getName();</b>
+<b class="fc">&nbsp;        assertEquals(expected,actual);</b>
+<b class="fc">&nbsp;        assertEquals(1,temp);</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_get_student_Number() {
+<b class="fc">&nbsp;        String expected = &quot;12345678&quot;;</b>
+<b class="fc">&nbsp;        temp = st.setNumber(expected);</b>
+<b class="fc">&nbsp;        String actual = st.getNumber();</b>
+<b class="fc">&nbsp;        assertEquals(expected,actual);</b>
+<b class="fc">&nbsp;        assertEquals(1,temp);</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_get_Activities_Mark() {
+<b class="fc">&nbsp;        int expected = 10;</b>
+<b class="fc">&nbsp;        temp = st.setActivitiesMark(expected);</b>
+<b class="fc">&nbsp;        int actual = st.getActivitiesMark();</b>
+<b class="fc">&nbsp;        assertEquals(expected,actual);</b>
+<b class="fc">&nbsp;        assertEquals(1,temp);</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_get_Midterm_Mark() {
+<b class="fc">&nbsp;        int expected = 7;</b>
+<b class="fc">&nbsp;        temp = st.setMidtermExamMark(expected);</b>
+<b class="fc">&nbsp;        int actual = st.getMidtermExamMark();</b>
+<b class="fc">&nbsp;        assertEquals(expected,actual);</b>
+<b class="fc">&nbsp;        assertEquals(1,temp);</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_get_Practical_Mark() {
+<b class="fc">&nbsp;        int expected = 7;</b>
+<b class="fc">&nbsp;        temp = st.setPracticalMark(expected);</b>
+<b class="fc">&nbsp;        int actual = st.getPracticalMark();</b>
+<b class="fc">&nbsp;        assertEquals(expected,actual);</b>
+<b class="fc">&nbsp;        assertEquals(1,temp);</b>
+<b class="fc">&nbsp;    }</b>
+&nbsp;
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;    /////////////////////////////////////////////////
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void test_get_Final_Mark() {
+<b class="fc">&nbsp;        int expected = 50;</b>
+<b class="fc">&nbsp;        temp = st.setFinalExamMark(expected);</b>
+<b class="fc">&nbsp;        int actual = st.getFinalExamMark();</b>
+<b class="fc">&nbsp;        assertEquals(expected,actual);</b>
+<b class="fc">&nbsp;        assertEquals(1,temp);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /////////////////////////////////////////////////
+<b class="fc">&nbsp;    /////////////////////////////////////////////////</b>
+<b class="fc">&nbsp;    /////////////////////////////////////////////////</b>
+&nbsp;    /*
+&nbsp;     ************************************************************
+<b class="fc">&nbsp;     ************************************************************</b>
+<b class="fc">&nbsp;     * The following Test cases are related to WhiteBox Testing</b>
+<b class="fc">&nbsp;     ************************************************************</b>
+<b class="fc">&nbsp;     ************************************************************</b>
+&nbsp;     */
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetName() {
+&nbsp;        // Test valid input
+<b class="fc">&nbsp;        Student student = new Student(&quot;&quot;, &quot;&quot;, 0, 0, 0, 0);</b>
+<b class="fc">&nbsp;        assertEquals(1, student.setName(&quot;John Doe&quot;));</b>
+&nbsp;
+&nbsp;        // Test invalid input
+<b class="fc">&nbsp;        assertEquals(0, student.setName(&quot;&quot;)); // empty name</b>
+<b class="fc">&nbsp;        assertEquals(0, student.setName(&quot;  Jane&quot;)); // name starting with space</b>
+<b class="fc">&nbsp;        assertEquals(0, student.setName(&quot;Jane123&quot;)); // name containing numbers</b>
+<b class="fc">&nbsp;        assertEquals(0, student.setName(&quot;Jane@Doe&quot;)); // name containing special characters</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetNumber() {
+&nbsp;        // Test valid input
+<b class="fc">&nbsp;        Student student = new Student(&quot;&quot;, &quot;&quot;, 0, 0, 0, 0);</b>
+<b class="fc">&nbsp;        assertEquals(0, student.setNumber(&quot;12345678s&quot;));</b>
+&nbsp;
+&nbsp;        // Test invalid input
+<b class="fc">&nbsp;        assertEquals(0, student.setNumber(&quot;&quot;)); // empty number</b>
+<b class="fc">&nbsp;        assertEquals(0, student.setNumber(&quot;12345678 &quot;)); // number ending with space</b>
+<b class="fc">&nbsp;        assertEquals(0, student.setNumber(&quot;12ABC678&quot;)); // number containing alphabetic characters</b>
+<b class="fc">&nbsp;        assertEquals(0, student.setNumber(&quot;1234567@&quot;)); // number containing special characters</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+<b class="fc">&nbsp;    public void testSetActivitiesMark() {</b>
+<b class="fc">&nbsp;        // Test valid input</b>
+<b class="fc">&nbsp;        Student student = new Student(&quot;&quot;, &quot;&quot;, 0, 0, 0, 0);</b>
+<b class="fc">&nbsp;        assertEquals(1, student.setActivitiesMark(5)); // within range</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        // Test invalid input</b>
+<b class="fc">&nbsp;        assertEquals(0, student.setActivitiesMark(-1)); // less than 0</b>
+<b class="fc">&nbsp;        assertEquals(0, student.setActivitiesMark(11)); // greater than 10</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+<b class="fc">&nbsp;    public void testSetPracticalMark() {</b>
+<b class="fc">&nbsp;        // Test valid input</b>
+<b class="fc">&nbsp;        Student student = new Student(&quot;&quot;, &quot;&quot;, 0, 0, 0, 0);</b>
+<b class="fc">&nbsp;        assertEquals(1, student.setPracticalMark(8)); // within range</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        // Test invalid input</b>
+<b class="fc">&nbsp;        assertEquals(0, student.setPracticalMark(-1)); // less than 0</b>
+<b class="fc">&nbsp;        assertEquals(0, student.setPracticalMark(11)); // greater than 10</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+<b class="fc">&nbsp;    public void testSetMidtermExamMark() {</b>
+<b class="fc">&nbsp;        // Test valid input</b>
+<b class="fc">&nbsp;        Student student = new Student(&quot;&quot;, &quot;&quot;, 0, 0, 0, 0);</b>
+<b class="fc">&nbsp;        assertEquals(1, student.setMidtermExamMark(15)); // within range</b>
+<b class="fc">&nbsp;</b>
+<b class="fc">&nbsp;        // Test invalid input</b>
+<b class="fc">&nbsp;        assertEquals(0, student.setMidtermExamMark(-1)); // less than 0</b>
+<b class="fc">&nbsp;        assertEquals(0, student.setMidtermExamMark(21)); // greater than 20</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testSetFinalExamMark() {
+&nbsp;        // Test valid input
+<b class="fc">&nbsp;        Student student = new Student(&quot;&quot;, &quot;&quot;, 0, 0, 0, 0);</b>
+<b class="fc">&nbsp;        assertEquals(1, student.setFinalExamMark(50)); // within range</b>
+&nbsp;
+&nbsp;        // Test invalid input
+<b class="fc">&nbsp;        assertEquals(0, student.setFinalExamMark(-1)); // less than 0</b>
+<b class="fc">&nbsp;        assertEquals(0, student.setFinalExamMark(61)); // greater than 60</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-05-13 18:26</div>
+</div>
+</body>
+</html>

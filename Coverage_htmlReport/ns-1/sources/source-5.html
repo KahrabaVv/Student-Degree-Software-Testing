@@ -1,0 +1,243 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Subject</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">MathUtils</a>
+</div>
+
+<h1>Coverage Summary for Class: Subject (MathUtils)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Subject</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88.1%
+  </span>
+  <span class="absValue">
+    (59/67)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package MathUtils;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;
+&nbsp;
+&nbsp;public class Subject {
+&nbsp;
+&nbsp;    private String name;
+&nbsp;    private String code;
+&nbsp;    private int fullMark;
+&nbsp;    private ArrayList&lt;Student&gt; enrolledStudents;
+&nbsp;
+&nbsp;    // constructor
+<b class="fc">&nbsp;    public Subject(String name, String code, int fullMark) {</b>
+<b class="fc">&nbsp;        this.name = name;</b>
+<b class="fc">&nbsp;        this.code = code;</b>
+<b class="fc">&nbsp;        this.fullMark = fullMark;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public String getName() {
+<b class="fc">&nbsp;        return name;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int setName(String name) {
+<b class="fc">&nbsp;        if (name.isEmpty()) {</b>
+<b class="fc">&nbsp;            System.out.print(&quot;invalid subject name empty&quot;);</b>
+<b class="fc">&nbsp;            return 0;</b>
+<b class="fc">&nbsp;        } else if (Character.isWhitespace(name.charAt(0))) {</b>
+<b class="fc">&nbsp;            System.out.print(&quot;invalid subject name start with space&quot;);</b>
+<b class="fc">&nbsp;            return 0;</b>
+<b class="fc">&nbsp;        } else if (name.matches(&quot;^[a-zA-Z]+$&quot;)) {</b>
+<b class="fc">&nbsp;            System.out.print(&quot;invalid name containing Alphabetic only&quot;);</b>
+<b class="fc">&nbsp;            return 0;</b>
+&nbsp;        } else {
+<b class="fc">&nbsp;            for (char c : name.toCharArray()) {</b>
+<b class="fc">&nbsp;                if (Character.isDigit(c)) {</b>
+<b class="fc">&nbsp;                    System.out.print(&quot;invalid subject name containing numbers&quot;);</b>
+<b class="fc">&nbsp;                    return 0;</b>
+<b class="fc">&nbsp;                } else if (!Character.isLetterOrDigit(c) &amp;&amp; !Character.isWhitespace(c)) {</b>
+<b class="fc">&nbsp;                    System.out.print(&quot;invalid subject name contains special symbol&quot;);</b>
+<b class="fc">&nbsp;                    return 0;</b>
+&nbsp;                }
+&nbsp;            }
+<b class="fc">&nbsp;            this.name = name;</b>
+<b class="fc">&nbsp;            System.out.print(&quot;correct subject name info&quot;);</b>
+<b class="fc">&nbsp;            return 1;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public int setCode(String code) {
+<b class="fc">&nbsp;        if (code.isEmpty()) {</b>
+<b class="fc">&nbsp;            System.out.print(&quot;invalid subject code empty&quot;);</b>
+<b class="fc">&nbsp;            return 0;</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        else if (code.length() != 6 &amp;&amp; code.length() != 7) {</b>
+<b class="fc">&nbsp;            System.out.print(&quot;invalid subject code Length&quot;);</b>
+<b class="fc">&nbsp;            return 0;</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        else if (code.length() == 7) {</b>
+<b class="fc">&nbsp;            if (code.charAt(6) != &#39;s&#39;) {</b>
+<b class="fc">&nbsp;                System.out.print(&quot;invalid subject code&quot;);</b>
+<b class="fc">&nbsp;                return 0;</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        for (int i = 0; i &lt; 3; i++) {</b>
+<b class="fc">&nbsp;                if (!Character.isLetter(code.charAt(i))) {</b>
+<b class="fc">&nbsp;                    System.out.print(&quot;invalid subject code&quot;);</b>
+<b class="fc">&nbsp;                    return 0;</b>
+<b class="fc">&nbsp;                } else if (Character.isWhitespace(code.charAt(i))) {</b>
+<b class="nc">&nbsp;                    System.out.print(&quot;invalid subject code&quot;);</b>
+<b class="nc">&nbsp;                    return 0;</b>
+<b class="fc">&nbsp;                } else if (!Character.isLetterOrDigit(code.charAt(i)) &amp;&amp; !Character.isWhitespace(code.charAt(i))) {</b>
+<b class="nc">&nbsp;                    System.out.print(&quot;invalid subject code&quot;);</b>
+<b class="nc">&nbsp;                    return 0;</b>
+&nbsp;                }
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            for (int i = 3; i &lt; 6; i++) {</b>
+<b class="fc">&nbsp;                if (!Character.isDigit(code.charAt(i))) {</b>
+<b class="fc">&nbsp;                    System.out.print(&quot;invalid subject code&quot;);</b>
+<b class="fc">&nbsp;                    return 0;</b>
+<b class="fc">&nbsp;                } else if (Character.isWhitespace(code.charAt(i))) {</b>
+<b class="nc">&nbsp;                    System.out.print(&quot;invalid subject code&quot;);</b>
+<b class="nc">&nbsp;                    return 0;</b>
+<b class="fc">&nbsp;                } else if (!Character.isLetterOrDigit(code.charAt(i)) &amp;&amp; !Character.isWhitespace(code.charAt(i))) {</b>
+<b class="nc">&nbsp;                    System.out.print(&quot;invalid subject code&quot;);</b>
+<b class="nc">&nbsp;                    return 0;</b>
+&nbsp;                }
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            this.code = code;</b>
+<b class="fc">&nbsp;            System.out.print(&quot;Valid Subject Code&quot;);</b>
+<b class="fc">&nbsp;            return 1;</b>
+&nbsp;
+&nbsp;        }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    public String getCode() {
+<b class="fc">&nbsp;        return code;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    
+&nbsp;    public int getFullMark() {
+<b class="fc">&nbsp;        return fullMark;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int setFullMark(int fullMark) {
+<b class="fc">&nbsp;        if(fullMark &gt; 100 || fullMark &lt; 0)</b>
+&nbsp;        {
+<b class="fc">&nbsp;            System.out.print(&quot;full mark out of range&quot;);</b>
+<b class="fc">&nbsp;            return 0;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        else
+&nbsp;        {
+<b class="fc">&nbsp;            this.fullMark = fullMark;</b>
+<b class="fc">&nbsp;            System.out.print(&quot;full mark valid input&quot;);</b>
+<b class="fc">&nbsp;            return 1;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;    
+&nbsp;    
+&nbsp;    public ArrayList&lt;Student&gt; getEnrolledStudents() {
+<b class="fc">&nbsp;        return enrolledStudents;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setEnrolledStudents(ArrayList&lt;Student&gt; enrolledStudents) {
+<b class="fc">&nbsp;        this.enrolledStudents = enrolledStudents;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-05-15 21:48</div>
+</div>
+</body>
+</html>
